@@ -1,6 +1,10 @@
 
 script: 
   - pwd
-  - ls
+  - ls -l
   - ant run
+sudo: required
 
+services:
+  - docker
+docker build -t akastyka/printsmile .;
