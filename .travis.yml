@@ -7,5 +7,5 @@ script:
   - pwd
   - ls -l
   - ant run
-
-docker build -t akastyka/printsmile .;
+after_success:
+docker build -t akastyka/printsmile .
