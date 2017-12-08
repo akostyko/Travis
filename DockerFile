@@ -1,4 +1,15 @@
-FROM java:8
-COPY build/jar/helloworld.jar /
-WORKDIR /
-CMD ["java", "-jar", "helloworld.jar"]
+sudo: required
+
+services:
+  - docker
+language: java
+script: ant run
+branches:
+  only:
+    master
+after_success:
+  - if [ "$TRAVIS_BRANCH" == "master" ];  then
+    docker build -t akastyka/printsmile .;
+    docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
+    docker push akastyka/printsmile;
+    fi
