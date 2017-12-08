@@ -2,11 +2,14 @@ sudo: required
 
 services:
   - docker
-
-script: 
-  - pwd
-  - ls -l
-  - ant run
+language: java
+script: ant run
+branches:
+  only:
+    master
 after_success:
-  lstat ./DockerFile;
-  docker build -t akastyka/printsmile .;
+  - if [ "$TRAVIS_BRANCH" == "master" ];  then
+    docker build -t akastyka/printsmile .;
+    docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
+    docker push akastyka/printsmile;
+    fi
