@@ -8,4 +8,4 @@ script:
   - ls -l
   - ant run
 after_success:
-docker build -t akastyka/printsmile .
+  docker build -t akastyka/printsmile .;
