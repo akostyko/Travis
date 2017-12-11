@@ -2,7 +2,7 @@ sudo: required
 
 services:
   - docker
-language: java
+language:  java
 script: ant run
 branches:
   only:
