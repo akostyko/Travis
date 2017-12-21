@@ -6,7 +6,7 @@
 	
     <target name="compile" depends="clean">
     	<mkdir dir="build/classes"/>    	
-        <javac sourcepath="D:\работа\own\eclipse\Travis" srcdir="src" destdir="build/classes">
+        <javac srcdir="src" destdir="build/classes">
         	<include name="**/*.java"/>
         </javac>
     </target>
